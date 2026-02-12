@@ -1,0 +1,165 @@
+/* --- Global Styles & Background --- */
+body {
+    font-family: 'Arial', sans-serif; 
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.main-container {
+    background: linear-gradient(135deg, #a80077 0%, #6610f2 100%); /* Deep Pink/Purple Gradient */
+    background-size: cover;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* --- 1. Animation: Confetti (index.html) --- */
+.confetti-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Add a subtle animation/background image here for a continuous confetti feel */
+    background-image: url('img/confetti_texture.png'); 
+    opacity: 0.8;
+    z-index: 1;
+}
+
+/* --- 1. Animation: Title Glitch (index.html) --- */
+@keyframes text-glitch {
+    0% { transform: scale(1); opacity: 1; }
+    20% { transform: scale(1.02); opacity: 0.9; }
+    40% { transform: scale(1); opacity: 1; }
+    60% { transform: translateX(3px); }
+    80% { transform: translateX(-3px); }
+    100% { transform: translateX(0); }
+}
+
+.title-glitch {
+    font-weight: 900;
+    animation: text-glitch 4s infinite alternate;
+    text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4; /* Pink Neon Glow */
+    z-index: 2;
+    position: relative;
+}
+
+/* --- 1. Animation: Floating Gift (index.html) --- */
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(2deg); }
+}
+
+.gift-float {
+    max-width: 250px;
+    animation: float 4s ease-in-out infinite;
+    z-index: 2;
+    position: relative;
+}
+
+/* --- 1. Animation: Shimmer Button (Universal) --- */
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.btn-shine {
+    padding: 15px 40px;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-weight: bold;
+    background: linear-gradient(120deg, #ff69b4, #ff007f, #ff69b4); /* Pink to Red Gradient */
+    background-size: 200% 100%;
+    transition: all 0.4s ease;
+}
+
+.btn-shine:hover {
+    animation: shimmer 1.5s infinite;
+    transform: scale(1.05);
+    color: white; /* Ensure text remains white */
+}
+
+/* --- 2. Glassmorphism Card (message.html) --- */
+.glass-card {
+    background: rgba(255, 255, 255, 0.15); /* Semi-transparent */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    max-width: 600px;
+}
+
+/* --- 2. Animation: Typewriter Cursor (message.html) --- */
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: white; }
+}
+
+.message-area {
+    min-height: 150px; /* Space for text */
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden; /* Important for the typewriter effect */
+}
+
+.typewriter-text {
+    /* Initial styling for the text */
+    font: 1em sans-serif;
+    display: inline-block;
+    white-space: pre-wrap;
+    overflow: hidden;
+}
+
+.cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.2em; /* Height of a line of text */
+    background-color: white;
+    vertical-align: middle;
+    animation: blink-caret 1s step-end infinite;
+    position: absolute;
+}
+
+/* --- 3. Animation: 3D Pop-Out Card (gallery.html) --- */
+.popout-card {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.popout-card:hover {
+    transform: perspective(1000px) rotateX(7deg) scale(1.05); /* 3D Tilt and scale */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.popout-card img {
+    height: 400px; /* Fixed height for uniformity */
+    object-fit: cover;
+}
+
+/* --- 4. Animation: Pulsing Heart (surprise.html) --- */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+.pulsing-heart {
+    margin-top: 50px;
+    max-width: 300px;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+.reveal-text {
+    /* Initially hide the text for a reveal effect */
+    font: 1em sans-serif;
+    opacity: 0;
+    transition: opacity 2s ease-in;
+    animation: fadeIn 2s forwards 0.5s; /* Fade in after a short delay */
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
